@@ -1,4 +1,4 @@
--- decide reality ( if ) and count ( for )
--- decide the target either in any or both
--- inside reality , there are 2 ways ( nothing / action / continue / break / return )
--- only ine return , except it was in reality
+-- decide reality ( if ) and count ( for )  
+-- decide the target either in any or both  
+-- inside reality , there are 2 ways ( nothing / action / continue / break / return )  
+-- only ine return , except it was in reality   
