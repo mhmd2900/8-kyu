@@ -1,0 +1,19 @@
+#include<iostream>
+// #include<string>
+// #include <cctype>
+// using namespace std;
+
+
+
+int main ()
+{
+
+std::string str = "aahh" ;
+// for ( size_t i = 0 ; i < str.size() ; i ++ )
+// for ( auto a : str )
+std::cout << str.length() ;
+
+
+
+return 0 ;
+} 
