@@ -1,19 +1,21 @@
-```  
-#include<iostream>
-// #include<string>
-// #include <cctype>
-// using namespace std;
-
-int main ()
-{
-
-std::string str = "aahh" ;
-// test
-std::cout << str.length() ;
 
 
 
-return 0 ;
-} 
-```  
-```   
+
+
+
+
+
+
+string str ="ACSKLDFJSGSKLDFJSKLDFJ" ;
+ int x = 0 ;
+for ( int i = 0 ; i < size(str) ; i ++ )
+  {
+    if ( isupper(str[i]) )
+    continue ;
+
+    else 
+    x ++ ;
+    
+  }
+
