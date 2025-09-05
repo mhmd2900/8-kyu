@@ -1,3 +1,4 @@
 -- decide the relation between reality ( if ) and count ( for )  
--- decide actions ( nothing / expression / continue / break / return ) , and their positions   
+-- decide actions ( nothing / expression / continue / break / return ) , and their positions     
+-- put actions as a framework , no details at beginning   
 -- only one return , except it was in reality   
