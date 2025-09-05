@@ -22,13 +22,18 @@ for ( auto p : vnum)
 cout << p << endl ;
 
 /// =================================================================
+    // for      have   count   ,  value 
+    // array    have   count   ,  index  ,  value
+    // we will mark some values to discard
+    // we will link the value either to array index (j-1 ) or array count 
+    
 
     int arr[100] = {0} ;  // default value  0
 
 for ( int i = 2 ; i < 100 ; ++ i) 
 {
     for ( int j = i*i ; j < 100     ;  j+= i )
-     arr [j -1 ] = 1 ;     // discard by making value 1 
+     arr [j -1 ] = 1 ;     // discard by making value 1  // link for value  to arr index
 }
 
 
