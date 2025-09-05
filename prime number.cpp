@@ -21,21 +21,22 @@ int x ;
 for ( auto p : vnum)
 cout << p << endl ;
 
-/// another way
+/// =================================================================
 
-    int arr[100] = {0} ;
+    int arr[100] = {0} ;  // default value  0
 
 for ( int i = 2 ; i < 100 ; ++ i) 
 {
     for ( int j = i*i ; j < 100     ;  j+= i )
-     arr [j -1 ] = 1 ;
-
+     arr [j -1 ] = 1 ;     // discard by making value 1 
 }
 
-for ( int a = 0 ; a < 100 ; a ++ )
+
+    
+for ( int a = 1 ; a < 100 ; a ++ )
 {
- if ( arr[a-1] == 0 )
- cout << a  << "\t" ;
+ if ( arr[a-1] == 0 )  // check arr value ( index - 1 )
+ cout << a  << "\t" ;  // output  index
 }
 
 return 0 ;
