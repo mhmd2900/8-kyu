@@ -1,16 +1,24 @@
 
-                                                                                    ////////////////////       make array from random or user input 
+                                                                                   //////////////////////////   make array one by one    ( random or user )
+                                                                                    void add_array_element ( int arr[] , int &index )
+                                                                                    {
+                                                                                      arr[index] = read(" plz enter number \n");  
+                                                                                      index ++ ;
+                                                                                    } // index = 0 in  int main 
+
+
+
+                                                                                    ///////////////////////       make array total         ( random or user )
                                                                                     void make_array ( int arr[] , int size)
                                                                                     {
                                                                                     for ( int i = 0 ; i < size ; i ++ )
-                                                                                    arr[i] = random ( 0 , 100 ) ;
-                                                                                      // arr[i] = read(" plz write number ");
+                                                                                     arr[i] = read(" plz enter number \n");
                                                                                     }
                                                                                     
 
 
 
-                                                                                    /////////////////////      make array from itself ( by swapping )
+                                                                                    /////////////////////      make array from itself ( by swapping - irreversible )
                                                                                     void swap ( int& a , int& b )
                                                                                     {
                                                                                     int temp ;
@@ -31,7 +39,7 @@
 
 
 
-                                                                                ////////////////////////    make string from itself  ( with known key )
+                                                                                ////////////////////////    make string from itself  ( with known key - reversible )
                                                                                 string crypt ( string password , int key )
                                                                                 {
                                                                                 for ( int i = 0 ; i < password.length() ; i ++ )
