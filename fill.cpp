@@ -1,11 +1,17 @@
 
                                                                                    //////////////////////////   make array one by one    ( random or user )
-                                                                                    void add_array_element ( int arr[] , int &index )
+                                                                                    void copy ( int numb , int arr2[] , int& index )
                                                                                     {
-                                                                                      arr[index] = read(" plz enter number \n");  
+                                                                                      arr2[index] = numb  ;
                                                                                       index ++ ;
-                                                                                    } // index = 0 in  int main 
+                                                                                    }// index = 0 in  int main 
 
+                                                                                    void copycopy (int arr1[] ,int arr2[] ,int size ,int& index )
+                                                                                    {
+                                                                                    for ( int i = 0 ; i < size ; i ++ )
+                                                                                    if (check_prime(arr1[i])) // if needed
+                                                                                    copy ( arr1[i] , arr2 , index );
+                                                                                    }
 
 
                                                                                     ///////////////////////       make array total         ( random or user )
