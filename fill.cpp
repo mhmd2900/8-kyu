@@ -29,30 +29,33 @@
 
 
 
-////////////////////////    make string from itself  ( with known key )
-string crypt ( string password , int key )
-{
-for ( int i = 0 ; i < password.length() ; i ++ )
-password[i] = static_cast<char> (static_cast<unsigned char>(password[i]) + key) ;
-return password ;
-}
-// Yes, the conversion from int (or unsigned char) to char happens implicitly — but you should still write the explicit static_cast<char> for 3 critical reasons:
-// 🧭 Clarity & Intent — You’re telling the reader (and yourself): “I know this is a narrowing conversion, and I want it.”
-// ⚠️ Compiler Warnings — Without cast, some compilers (with -Wconversion or similar flags) will warn you about implicit narrowing.
-// 🔍 Defensive Programming — Makes code more robust against future changes or stricter compiler settings.
 
 
-
-
-/////////////////////////    make string from other string  ( with known key )
-string decrypt ( string password , int key )
-{
-string pass ;
-for ( int i = 0 ; i < password.length() ; i ++ )
-// for ( char& i : password )
-pass += static_cast<char>(static_cast<unsigned char>(password[i]) - key) ;
-return pass ;
-}
+                                                                                ////////////////////////    make string from itself  ( with known key )
+                                                                                string crypt ( string password , int key )
+                                                                                {
+                                                                                for ( int i = 0 ; i < password.length() ; i ++ )
+                                                                                password[i] = static_cast<char> (static_cast<unsigned char>(password[i]) + key) ;
+                                                                                return password ;
+                                                                                }
+                                                                                // Yes, the conversion from int (or unsigned char) to char happens implicitly — 
+                                                                                // but you should still write the explicit static_cast<char> for 3 critical reasons:
+                                                                                // 🧭 Clarity & Intent — telling “I know this is a narrowing conversion, and I want it.”
+                                                                                // ⚠️ Without cast, some compilers will warn you about implicit narrowing.
+                                                                                // 🔍 Makes code more robust against future changes or stricter compiler settings.
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                /////////////////////////    make string from other string  ( with known key )
+                                                                                string decrypt ( string password , int key )
+                                                                                {
+                                                                                string pass ;
+                                                                                for ( int i = 0 ; i < password.length() ; i ++ )
+                                                                                // for ( char& i : password )
+                                                                                pass += static_cast<char>(static_cast<unsigned char>(password[i]) - key) ;
+                                                                                return pass ;
+                                                                                }
 
 
 
