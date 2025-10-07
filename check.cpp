@@ -15,14 +15,9 @@ bool check_prime ( int num )
 ////////////// check distinct number ( copy repeated number only in 1st appearance )
 bool check ( int number , int arr [] , int index)
 {
-  int c = 0 ;
 for ( int i = index -1 ; i >= 0 ; i --)
-{
 if ( number == arr[i])
-c ++ ;
-}
-if ( c > 1)
 return false ;
-else
+
 return true ;
 }
