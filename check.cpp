@@ -21,3 +21,14 @@ return false ;
 
 return true ;
 }
+
+
+
+//////////////////// check palindrome
+bool check ( int arr[] , int size)
+{
+for ( int i = 0 ; i < size ; i ++)
+if (arr[i] != arr [size-1-i] )
+return false ;
+return true ;
+}
