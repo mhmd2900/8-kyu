@@ -9,17 +9,8 @@ enum enchoices { paper = 1 , stone = 2 , scissor = 3 , invalid };
 enum enplayers { pl1 , comp , draw } ;
 string choice_to_word (enchoices enenchoices )
 {
-    switch ( enenchoices )
-    {
-    case enchoices::paper :
-    return "paper" ;
-    case enchoices::stone :
-    return "stone" ;
-    case enchoices::scissor :
-    return "scissor" ;
-    default :
-    return "invalid" ;
-    }
+    string word [3] = { "paper" , "stone" , "scissor"};
+    return word[enenchoices-1];
 } 
 string choice_to_player (enplayers enenplayers )
 {
