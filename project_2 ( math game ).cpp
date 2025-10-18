@@ -72,7 +72,7 @@ short wrong_number = 0  ;
                                                                                 return rand()%( to - from + 1 ) + from ;
                                                                                 }
 
-void choose_nums    ( st_round& stst_round , st_game stst_game)  // const st_game& stst_game 
+void show_nums    ( st_round& stst_round , st_game stst_game)  // const st_game& stst_game 
 {
 if (stst_game.enenquestion == enquestion::easy )
 {
@@ -96,18 +96,13 @@ stst_round.num2 = random ( 1 , 222);
 }
 }                                                                             
 
-void choose_operator( st_round& stst_round , st_game stst_game)  // const st_game& stst_game 
+void show_operator( st_round& stst_round , st_game stst_game)  // const st_game& stst_game 
 {
-if      (stst_game.enenoperator == enoperator::add)
-stst_round.op = "+";
-else if (stst_game.enenoperator == enoperator::sub)
-stst_round.op = "-";
-else if (stst_game.enenoperator == enoperator::mult)
-stst_round.op = "*";
-else if (stst_game.enenoperator == enoperator::divi)
-stst_round.op = "/";
-else if (stst_game.enenoperator == enoperator::all)
+if (stst_game.enenoperator == enoperator::all)
 stst_round.op = operator_to_word (enoperator(random(1,4))) ;
+
+else 
+stst_round.op = operator_to_word(stst_game.enenoperator) ;
 }
 
 void user_answer    (st_round&  stst_round)
@@ -117,7 +112,7 @@ cout << stst_round.num1 << endl ;
 cout << stst_round.op  << endl ; 
 cout << stst_round.num2 << endl  ;
 cout << "_______ \n " ;
-stst_round.user_ans = number ( "") ;
+stst_round.user_ans = number ("") ;
 
 }
 
@@ -161,8 +156,8 @@ st_round stst_round ;
 
 cout << "  \n ============================== \n       Question [" << count << "/"<< stst_game.questions_number << "]" << endl ;
 
-choose_nums     ( stst_round , stst_game) ;
-choose_operator ( stst_round , stst_game) ;
+show_nums       ( stst_round , stst_game) ;
+show_operator   ( stst_round , stst_game) ;
 user_answer     ( stst_round) ;
 comp_answer     ( stst_round) ;
 correct_wrong   ( stst_round , stst_game) ;
