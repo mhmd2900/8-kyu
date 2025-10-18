@@ -26,10 +26,22 @@ case enoperator::mult:
 return "*" ;
 case enoperator::divi :
 return "/" ;
+// case enoperator::mix :
+// return ;
 default :
 return "all" ;
 }
 }
+
+struct st_round 
+{
+int num1 = 0 ;
+int num2  = 0 ;
+int comp_ans = 0 ;
+int user_ans = 0 ;
+char op = 'a' ;
+st_game stst_game ;
+};
 
 struct st_game 
 {
@@ -39,15 +51,6 @@ enquestion enenquestion ;
 enoperator enenoperator ;
 int correct_number = 0 ;
 int wrong_number = 0  ;
-};
-
-struct st_round 
-{
-int num1 = 0 ;
-int num2  = 0 ;
-int comp_ans = 0 ;
-int user_ans = 0 ;
-char op = 'a' ;
 };
 
                                                                                 int number ( string message )
@@ -108,45 +111,45 @@ cin.ignore(100,'\n');
 }
 }
 
-void choose_nums ( st_round& stst_round , st_game stst_game)   
+void choose_nums ( st_round& stst_round )   
 {
-if (stst_game.enenquestion == enquestion::easy )
+if (stst_round.stst_game.enenquestion == enquestion::easy )
 {
 stst_round.num1 = random ( 1 , 9);
 stst_round.num2 = random ( 1 , 9);
 }
-else if (stst_game.enenquestion == enquestion::med)
+else if (stst_round.stst_game.enenquestion == enquestion::med)
 {
 stst_round.num1 = random ( 11 , 99);
 stst_round.num2 = random ( 11 , 99);
 }
-else if (stst_game.enenquestion == enquestion::hard )
+else if (stst_round.stst_game.enenquestion == enquestion::hard )
 {
 stst_round.num1 = random ( 111 , 222);
 stst_round.num2 = random ( 111 , 222 );
 }
-else if (stst_game.enenquestion == enquestion::mix )
+else if (stst_round.stst_game.enenquestion == enquestion::mix )
 {
 stst_round.num1 = random ( 1 , 222);
 stst_round.num2 = random ( 1 , 222);
 }
 }                                                                             
 
-void choose_operator ( st_round& stst_round , st_game stst_game)
+void choose_operator ( st_round& stst_round )
 {
-if      (stst_game.enenoperator == enoperator::add)
+if      (stst_round.stst_game.enenoperator == enoperator::add)
 stst_round.op = '+';
-else if (stst_game.enenoperator == enoperator::sub)
+else if (stst_round.stst_game.enenoperator == enoperator::sub)
 stst_round.op = '-';
-else if (stst_game.enenoperator == enoperator::mult)
+else if (stst_round.stst_game.enenoperator == enoperator::mult)
 stst_round.op = '*';
-else if (stst_game.enenoperator == enoperator::divi)
+else if (stst_round.stst_game.enenoperator == enoperator::divi)
 stst_round.op = '/';
-else if (stst_game.enenoperator == enoperator::all)
+else if (stst_round.stst_game.enenoperator == enoperator::all)
 stst_round.op = char ( random_op()) ;
 }
 
-void user_answer (st_round&  stst_round)
+void user_answer (st_round&  stst_round )
 {
 
 cout << stst_round.num1 << endl ;
@@ -157,7 +160,7 @@ stst_round.user_ans = number ( "") ;
 
 }
 
-void comp_answer ( st_round& stst_round)
+void comp_answer ( st_round& stst_round )
 {
 if         (stst_round.op == '+' )
 stst_round.comp_ans = stst_round.num1 + stst_round.num2 ;
@@ -169,19 +172,19 @@ else if    (stst_round.op == '/' )
 stst_round.comp_ans = stst_round.num1 / stst_round.num2 ;
 }
 
-void correct_wrong ( st_round stst_round , st_game& stst_game )
+void correct_wrong ( st_round& stst_round )
 {
 if ( stst_round.user_ans == stst_round.comp_ans )
 {
 cout << " \n correct answer \n" ;
 system ( " color 2F");
-stst_game.correct_number ++ ;
+stst_round.stst_game.correct_number ++ ;
 }
 else 
 {
 cout << " \n wrong answer \n the correct answer is " << stst_round.comp_ans << endl ; 
 system ( " color 4F");
-stst_game.wrong_number ++ ;
+stst_round.stst_game.wrong_number ++ ;
 }
 }
 
@@ -191,18 +194,18 @@ st_round stst_round ;
 
 cout << "  \n ============================== \n       Question [" << count << "/"<< stst_game.questions_number << "]" << endl ;
 
-choose_nums     ( stst_round , stst_game) ;
-choose_operator ( stst_round , stst_game) ;
+choose_nums     ( stst_round) ;
+choose_operator ( stst_round) ;
 user_answer     ( stst_round) ;
 comp_answer     ( stst_round) ;
-correct_wrong   ( stst_round , stst_game) ;
+correct_wrong   ( stst_round) ;
 }
 
 void pass_or_fail ( st_game& stst_game )
 {
-if      ( stst_game.correct_number > stst_game.wrong_number)
+if      ( stst_round.stst_game.correct_number > stst_game.wrong_number)
 stst_game.enpasser = enpassfail::pass ;
-else if ( stst_game.correct_number < stst_game.wrong_number)
+else if ( stst_round.stst_game.correct_number < stst_game.wrong_number)
 stst_game.enpasser = enpassfail::fail ;
 else
 stst_game.enpasser = enpassfail::draw ;
@@ -235,18 +238,18 @@ system ("color 6 F");
 void stats ( st_game stst_game )
 {
 cout << " \n number of questions   : " << stst_game.questions_number ;
-cout << " \n question level        : " << level_to_word   (stst_game.enenquestion) ;
-cout << " \n operative type        : " << operator_to_word(stst_game.enenoperator);
-cout << " \n correct answers       : " << stst_game.correct_number ;
+cout << " \n question level        : " << level_to_word   (stst_round.stst_game.enenquestion) ;
+cout << " \n operative type        : " << operator_to_word(stst_round.stst_game.enenoperator);
+cout << " \n correct answers       : " << stst_round.stst_game.correct_number ;
 cout << " \n wrong answers         : " << stst_game.wrong_number ;
 }
 
-void game ()
+void game ()                                          
 {
 st_game  stst_game ;
 stst_game.questions_number   =                   number (" \n how many questions do you want to answer ? \n") ;
-stst_game.enenquestion       = enquestion       (number (" choose question level    [1]easy  [2]med  [3]hard   [4]mix  \n") ) ;
-stst_game.enenoperator       = enoperator       (number (" choose operator  [1]add  [2]sub  [3]mult  [4]divi   [5]all  \n") ) ;
+stst_round.stst_game.enenquestion       = enquestion       (number (" choose question level    [1]easy  [2]med  [3]hard   [4]mix  \n") ) ;
+stst_round.stst_game.enenoperator       = enoperator       (number (" choose operator  [1]add  [2]sub  [3]mult  [4]divi   [5]all  \n") ) ;
 
 for ( int i = 1 ; i <= stst_game.questions_number ; i ++ )
 round (i , stst_game);
@@ -254,7 +257,6 @@ round (i , stst_game);
 pass_or_fail(stst_game) ;
 print__pass_or_fail (stst_game) ;
 stats ( stst_game) ;
-
 }
 
 void restart()
