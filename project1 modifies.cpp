@@ -99,18 +99,18 @@ bool want_to_repeat ()
  while ( true )
  {
 
- if ( cin >> ch && ( ch == 'y' || ch == 'Y' ))
-return true ;
+    if ( cin >> ch && ( ch == 'y' || ch == 'Y' ))
+    return true ;
 
-else if ( ch == 'n' || ch == 'N' )
-return false ;
+    else if ( ch == 'n' || ch == 'N' )
+    return false ;
 
-else
-{
- cout << " only choose  [ y / n ] ? \n";
- cin.clear();
- cin.ignore ( 100 , '\n');
-}
+    else
+    {
+    cout << " only choose  [ y / n ] ? \n";
+    cin.clear();
+    cin.ignore ( 100 , '\n');
+    }
  }
 }
 
@@ -118,20 +118,17 @@ void color_rule ( stround ststround , st_gamestats& stst_gamestats)
 {
 if ( ststround.winner == pl1 )
 {
-cout << " \n pl1 wins \n";
 system ("color 2F");
 stst_gamestats.pl1_win ++ ;
 }
 else if ( ststround.winner == comp )
 {
-cout << " \n comp wins \n";
 system ("color 4F");
 stst_gamestats.comp_win ++ ;
 }
 else if ( ststround.winner == draw )
 {
-cout << " \n no winner \n";
-system ("color E0");
+system ("color 6F");
 stst_gamestats.draw_win ++ ;
 }
 }
@@ -140,14 +137,15 @@ stst_gamestats.draw_win ++ ;
 void winning_rule ( stround& ststround )
 {
 if ( ststround.pl1_choose == ststround.comp_choose )
-ststround.winner = draw ;
+ststround.winner = enplayers::draw ;
 else 
 {
-ststround.winner =  ( ststround.pl1_choose == enchoices::paper && ststround.comp_choose == enchoices::stone ) ||
-                    ( ststround.pl1_choose == enchoices::stone && ststround.comp_choose == enchoices::scissor ) ||
-                    ( ststround.pl1_choose == enchoices::scissor && ststround.comp_choose == enchoices::paper )
- ?pl1 : comp  ;
+ststround.winner =  ( ststround.pl1_choose == enchoices::paper   && ststround.comp_choose == enchoices::stone   ) ||
+                    ( ststround.pl1_choose == enchoices::stone   && ststround.comp_choose == enchoices::scissor ) ||
+                    ( ststround.pl1_choose == enchoices::scissor && ststround.comp_choose == enchoices::paper   )
+ ?enplayers::pl1 : enplayers::comp  ;
 }
+cout << " \n round winner is " << choice_to_player(ststround.winner) ;
 }
 
 
@@ -169,26 +167,23 @@ void all_rounds ()
 st_gamestats stst_gamestats ;
 
 stst_gamestats.count = input_number(" how many rounds ? \n ") ;
-
 for ( int i = 0 ; i < stst_gamestats.count ; i ++ )
 each_round(stst_gamestats ) ;
 
 game_over();
+
 cout <<" \n number of rounds " <<stst_gamestats.count;
 cout <<" \n player 1 wins  " <<stst_gamestats.pl1_win;
 cout <<" \n computer wins  " <<stst_gamestats.comp_win;
 cout <<" \n no winner times " <<stst_gamestats.draw_win;
-
 if ( stst_gamestats.pl1_win > stst_gamestats.comp_win)
 stst_gamestats.final_winner   = enplayers::pl1 ;
-
 else if ( stst_gamestats.pl1_win < stst_gamestats.comp_win)
 stst_gamestats.final_winner   = enplayers::comp ;
-
 else
-stst_gamestats .final_winner  = enplayers::draw ;
-
+stst_gamestats.final_winner  = enplayers::draw ;
 cout << " \n final winner is " << choice_to_player(stst_gamestats.final_winner ) ;
+
 }
 
 
@@ -209,3 +204,6 @@ srand((unsigned)time(NULL));
 game_start();
 return 0;
 }
+
+
+
