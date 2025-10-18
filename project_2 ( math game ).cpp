@@ -26,8 +26,6 @@ case enoperator::mult:
 return "*" ;
 case enoperator::divi :
 return "/" ;
-// case enoperator::mix :
-// return ;
 default :
 return "all" ;
 }
