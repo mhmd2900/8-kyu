@@ -185,6 +185,7 @@ else
 {
 cout << " \n wrong answer \n the correct answer is " << ststtwo_numbers.ans << endl ; 
 system ( " color 4F");
+ststgamestats.wrong_number++;
 }
 }
 
