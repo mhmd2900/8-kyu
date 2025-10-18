@@ -33,7 +33,7 @@ return "all" ;
 }
 }
 
-struct stgamestats 
+struct st_game 
 {
 enpassfail enpasser ;
 int questions_number = 0 ;
@@ -43,7 +43,7 @@ int correct_number = 0 ;
 int wrong_number = 0  ;
 };
 
-struct sttwo_numbers 
+struct st_round 
 {
 int num1 = 0 ;
 int num2  = 0 ;
@@ -110,117 +110,117 @@ cin.ignore(100,'\n');
 }
 }
 
-void choose_nums ( sttwo_numbers& ststtwo_numbers , stgamestats ststgamestats)   
+void choose_nums ( st_round& stst_round , st_game stst_game)   
 {
-if (ststgamestats.enenquestion == enquestion::easy )
+if (stst_game.enenquestion == enquestion::easy )
 {
-ststtwo_numbers.num1 = random ( 1 , 9);
-ststtwo_numbers.num2 = random ( 1 , 9);
+stst_round.num1 = random ( 1 , 9);
+stst_round.num2 = random ( 1 , 9);
 }
-else if (ststgamestats.enenquestion == enquestion::med)
+else if (stst_game.enenquestion == enquestion::med)
 {
-ststtwo_numbers.num1 = random ( 11 , 99);
-ststtwo_numbers.num2 = random ( 11 , 99);
+stst_round.num1 = random ( 11 , 99);
+stst_round.num2 = random ( 11 , 99);
 }
-else if (ststgamestats.enenquestion == enquestion::hard )
+else if (stst_game.enenquestion == enquestion::hard )
 {
-ststtwo_numbers.num1 = random ( 111 , 222);
-ststtwo_numbers.num2 = random ( 111 , 222 );
+stst_round.num1 = random ( 111 , 222);
+stst_round.num2 = random ( 111 , 222 );
 }
-else if (ststgamestats.enenquestion == enquestion::mix )
+else if (stst_game.enenquestion == enquestion::mix )
 {
-ststtwo_numbers.num1 = random ( 1 , 222);
-ststtwo_numbers.num2 = random ( 1 , 222);
+stst_round.num1 = random ( 1 , 222);
+stst_round.num2 = random ( 1 , 222);
 }
 }                                                                             
 
-void choose_operator ( sttwo_numbers& ststtwo_numbers , stgamestats ststgamestats)
+void choose_operator ( st_round& stst_round , st_game stst_game)
 {
-if      (ststgamestats.enenoperator == enoperator::add)
-ststtwo_numbers.op = '+';
-else if (ststgamestats.enenoperator == enoperator::sub)
-ststtwo_numbers.op = '-';
-else if (ststgamestats.enenoperator == enoperator::mult)
-ststtwo_numbers.op = '*';
-else if (ststgamestats.enenoperator == enoperator::divi)
-ststtwo_numbers.op = '/';
-else if (ststgamestats.enenoperator == enoperator::all)
-ststtwo_numbers.op = char ( random_op()) ;
+if      (stst_game.enenoperator == enoperator::add)
+stst_round.op = '+';
+else if (stst_game.enenoperator == enoperator::sub)
+stst_round.op = '-';
+else if (stst_game.enenoperator == enoperator::mult)
+stst_round.op = '*';
+else if (stst_game.enenoperator == enoperator::divi)
+stst_round.op = '/';
+else if (stst_game.enenoperator == enoperator::all)
+stst_round.op = char ( random_op()) ;
 }
 
-void user_answer (sttwo_numbers&  ststtwo_numbers)
+void user_answer (st_round&  stst_round)
 {
 
-cout << ststtwo_numbers.num1 << endl ;
-cout << ststtwo_numbers.op  << endl ; 
-cout << ststtwo_numbers.num2 << endl  ;
+cout << stst_round.num1 << endl ;
+cout << stst_round.op  << endl ; 
+cout << stst_round.num2 << endl  ;
 cout << "_______ \n " ;
-ststtwo_numbers.user_ans = number ( "") ;
+stst_round.user_ans = number ( "") ;
 
 }
 
-void comp_answer ( sttwo_numbers& ststtwo_numbers)
+void comp_answer ( st_round& stst_round)
 {
-if         (ststtwo_numbers.op == '+' )
-ststtwo_numbers.comp_ans = ststtwo_numbers.num1 + ststtwo_numbers.num2 ;
-else if    (ststtwo_numbers.op == '-' )
-ststtwo_numbers.comp_ans = ststtwo_numbers.num1 - ststtwo_numbers.num2 ;
-else if    (ststtwo_numbers.op == '*' )
-ststtwo_numbers.comp_ans = ststtwo_numbers.num1 * ststtwo_numbers.num2 ;
-else if    (ststtwo_numbers.op == '/' )
-ststtwo_numbers.comp_ans = ststtwo_numbers.num1 / ststtwo_numbers.num2 ;
+if         (stst_round.op == '+' )
+stst_round.comp_ans = stst_round.num1 + stst_round.num2 ;
+else if    (stst_round.op == '-' )
+stst_round.comp_ans = stst_round.num1 - stst_round.num2 ;
+else if    (stst_round.op == '*' )
+stst_round.comp_ans = stst_round.num1 * stst_round.num2 ;
+else if    (stst_round.op == '/' )
+stst_round.comp_ans = stst_round.num1 / stst_round.num2 ;
 }
 
-void correct_wrong ( sttwo_numbers ststtwo_numbers , stgamestats& ststgamestats )
+void correct_wrong ( st_round stst_round , st_game& stst_game )
 {
-if ( ststtwo_numbers.user_ans == ststtwo_numbers.comp_ans )
+if ( stst_round.user_ans == stst_round.comp_ans )
 {
 cout << " \n correct answer \n" ;
 system ( " color 2F");
-ststgamestats.correct_number ++ ;
+stst_game.correct_number ++ ;
 }
 else 
 {
-cout << " \n wrong answer \n the correct answer is " << ststtwo_numbers.comp_ans << endl ; 
+cout << " \n wrong answer \n the correct answer is " << stst_round.comp_ans << endl ; 
 system ( " color 4F");
-ststgamestats.wrong_number ++ ;
+stst_game.wrong_number ++ ;
 }
 }
 
-void round ( int count , stgamestats& ststgamestats)
+void round ( int count , st_game& stst_game)
 {
-sttwo_numbers ststtwo_numbers ;
+st_round stst_round ;
 
-cout << "  \n ============================== \n       Question [" << count << "/"<< ststgamestats.questions_number << "]" << endl ;
+cout << "  \n ============================== \n       Question [" << count << "/"<< stst_game.questions_number << "]" << endl ;
 
-choose_nums     ( ststtwo_numbers , ststgamestats) ;
-choose_operator ( ststtwo_numbers , ststgamestats) ;
-user_answer     ( ststtwo_numbers) ;
-comp_answer     ( ststtwo_numbers) ;
-correct_wrong   ( ststtwo_numbers , ststgamestats) ;
+choose_nums     ( stst_round , stst_game) ;
+choose_operator ( stst_round , stst_game) ;
+user_answer     ( stst_round) ;
+comp_answer     ( stst_round) ;
+correct_wrong   ( stst_round , stst_game) ;
 }
 
-void pass_or_fail ( stgamestats& ststgamestats )
+void pass_or_fail ( st_game& stst_game )
 {
-if      ( ststgamestats.correct_number > ststgamestats.wrong_number)
-ststgamestats.enpasser = enpassfail::pass ;
-else if ( ststgamestats.correct_number < ststgamestats.wrong_number)
-ststgamestats.enpasser = enpassfail::fail ;
+if      ( stst_game.correct_number > stst_game.wrong_number)
+stst_game.enpasser = enpassfail::pass ;
+else if ( stst_game.correct_number < stst_game.wrong_number)
+stst_game.enpasser = enpassfail::fail ;
 else
-ststgamestats.enpasser = enpassfail::draw ;
+stst_game.enpasser = enpassfail::draw ;
 }
 
-void print__pass_or_fail ( stgamestats ststgamestats )
+void print__pass_or_fail ( st_game stst_game )
 {
 cout << "_________________________________________________________________\n";
 cout << " final result is ";
-if      ( ststgamestats.enpasser == enpassfail::pass)
+if      ( stst_game.enpasser == enpassfail::pass)
 {
 cout << " PASS  :-)   \n_________________________________________________________________\n ";
 system (" color 2F") ;
 }
 
-else if ( ststgamestats.enpasser == enpassfail::fail)
+else if ( stst_game.enpasser == enpassfail::fail)
 {
 cout << " FAIL  :-(   \n_________________________________________________________________\n " ;
 system ( " color 4F");
@@ -234,28 +234,28 @@ system ("color 6 F");
 "_________________________________________________________________\n" ;
 }
 
-void stats ( stgamestats ststgamestats )
+void stats ( st_game stst_game )
 {
-cout << " \n number of questions   : " << ststgamestats.questions_number ;
-cout << " \n question level        : " << level_to_word   (ststgamestats.enenquestion) ;
-cout << " \n operative type        : " << operator_to_word(ststgamestats.enenoperator);
-cout << " \n correct answers       : " << ststgamestats.correct_number ;
-cout << " \n wrong answers         : " << ststgamestats.wrong_number ;
+cout << " \n number of questions   : " << stst_game.questions_number ;
+cout << " \n question level        : " << level_to_word   (stst_game.enenquestion) ;
+cout << " \n operative type        : " << operator_to_word(stst_game.enenoperator);
+cout << " \n correct answers       : " << stst_game.correct_number ;
+cout << " \n wrong answers         : " << stst_game.wrong_number ;
 }
 
 void game ()
 {
-stgamestats  ststgamestats ;
-ststgamestats.questions_number   = number (" \n how many questions do you want to answer ? \n") ;
-ststgamestats.enenquestion = enquestion (number (" choose question level    [1]easy  [2]med  [3]hard  [4]mix  \n") ) ;
-ststgamestats.enenoperator       = enoperator       (number (" choose operator  [1]add  [2]sub  [3]mult  [4]divi   [5]all  \n") ) ;
+st_game  stst_game ;
+stst_game.questions_number   =                   number (" \n how many questions do you want to answer ? \n") ;
+stst_game.enenquestion       = enquestion       (number (" choose question level    [1]easy  [2]med  [3]hard   [4]mix  \n") ) ;
+stst_game.enenoperator       = enoperator       (number (" choose operator  [1]add  [2]sub  [3]mult  [4]divi   [5]all  \n") ) ;
 
-for ( int i = 1 ; i <= ststgamestats.questions_number ; i ++ )
-round (i , ststgamestats);
+for ( int i = 1 ; i <= stst_game.questions_number ; i ++ )
+round (i , stst_game);
 
-pass_or_fail(ststgamestats) ;
-print__pass_or_fail (ststgamestats) ;
-stats ( ststgamestats) ;
+pass_or_fail(stst_game) ;
+print__pass_or_fail (stst_game) ;
+stats ( stst_game) ;
 
 }
 
