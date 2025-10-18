@@ -26,8 +26,6 @@ case enoperator::mult:
 return "*" ;
 case enoperator::divi :
 return "/" ;
-// case enoperator::mix :
-// return ;
 default :
 return "all" ;
 }
@@ -39,7 +37,7 @@ short num1 = 0 ;
 short num2  = 0 ;
 short comp_ans = 0 ;
 short user_ans = 0 ;
-char op = 'a' ;
+string op ;
 };
 
 struct st_game 
@@ -74,17 +72,6 @@ short wrong_number = 0  ;
                                                                                 return rand()%( to - from + 1 ) + from ;
                                                                                 }
 
-                                                                                short random_op ()
-                                                                                {
-                                                                                    short t = 0 ;
-                                                                                 while ( true )
-                                                                                 {
-                                                                                    t = rand()%9 + 40 ;
-                                                                                    if ( t == 42 || t == 43 || t == 45 || t == 47)
-                                                                                    return t ;
-                                                                                 }
-                                                                                }
-
 void choose_nums    ( st_round& stst_round , st_game stst_game)  // const st_game& stst_game 
 {
 if (stst_game.enenquestion == enquestion::easy )
@@ -112,15 +99,15 @@ stst_round.num2 = random ( 1 , 222);
 void choose_operator( st_round& stst_round , st_game stst_game)  // const st_game& stst_game 
 {
 if      (stst_game.enenoperator == enoperator::add)
-stst_round.op = '+';
+stst_round.op = "+";
 else if (stst_game.enenoperator == enoperator::sub)
-stst_round.op = '-';
+stst_round.op = "-";
 else if (stst_game.enenoperator == enoperator::mult)
-stst_round.op = '*';
+stst_round.op = "*";
 else if (stst_game.enenoperator == enoperator::divi)
-stst_round.op = '/';
+stst_round.op = "/";
 else if (stst_game.enenoperator == enoperator::all)
-stst_round.op = char ( random_op()) ;
+stst_round.op = operator_to_word (enoperator(random(1,4))) ;
 }
 
 void user_answer    (st_round&  stst_round)
@@ -136,13 +123,13 @@ stst_round.user_ans = number ( "") ;
 
 void comp_answer    ( st_round& stst_round)
 {
-if         (stst_round.op == '+' )
+if         (stst_round.op == "+" )
 stst_round.comp_ans = stst_round.num1 + stst_round.num2 ;
-else if    (stst_round.op == '-' )
+else if    (stst_round.op == "-" )
 stst_round.comp_ans = stst_round.num1 - stst_round.num2 ;
-else if    (stst_round.op == '*' )
+else if    (stst_round.op == "*" )
 stst_round.comp_ans = stst_round.num1 * stst_round.num2 ;
-else if    (stst_round.op == '/' )
+else if    (stst_round.op == "/" )
 stst_round.comp_ans = stst_round.num1 / stst_round.num2 ;
 }
 
