@@ -48,6 +48,7 @@ enquestion enenquestion ;
 enoperator enenoperator ;
 short correct_number = 0 ;
 short wrong_number = 0  ;
+st_round stst_round[10] ;
 };
 
                                                                                 short number ( string message , short from , short to )
@@ -86,13 +87,13 @@ stst_round.num2 = random ( 11 , 99);
 }
 else if (stst_game.enenquestion == enquestion::hard )
 {
-stst_round.num1 = random ( 111 , 222);
-stst_round.num2 = random ( 111 , 222 );
+stst_round.num1 = random ( 111 , 170 ); // 170 power2 is just below the short variable maximum number ( 32,768 )
+stst_round.num2 = random ( 111 , 170 );
 }
 else if (stst_game.enenquestion == enquestion::mix )
 {
-stst_round.num1 = random ( 1 , 222);
-stst_round.num2 = random ( 1 , 222);
+stst_round.num1 = random ( 1 , 170 );
+stst_round.num2 = random ( 1 , 170 );
 }
 }                                                                             
 
@@ -154,15 +155,14 @@ stst_game.wrong_number ++ ;
 
 void round          ( short count , st_game& stst_game) 
 {
-st_round stst_round ;
 
 cout << "  \n ============================== \n       Question [" << count << "/"<< stst_game.questions_number << "]" << endl ;
 
-show_nums       ( stst_round , stst_game) ;
-show_operator   ( stst_round , stst_game) ;
-user_answer     ( stst_round) ;
-comp_answer     ( stst_round) ;
-correct_wrong   ( stst_round , stst_game) ;
+show_nums       ( stst_game.stst_round[count-1] , stst_game) ;
+show_operator   ( stst_game.stst_round[count-1] , stst_game) ;
+user_answer     ( stst_game.stst_round[count-1]) ;
+comp_answer     ( stst_game.stst_round[count-1]) ;
+correct_wrong   ( stst_game.stst_round[count-1] , stst_game) ;
 }
 
 void pass_or_fail           ( st_game& stst_game )
@@ -194,7 +194,7 @@ system ( " color 4F");
 else 
 {
 cout << " DRAW \n_________________________________________________________________\n " ;
-system ("color 6 F");
+system ("color 6F");
 }
 "_________________________________________________________________\n" ;
 }
@@ -206,6 +206,11 @@ cout << " \n question level        : " << level_to_word   (stst_game.enenquestio
 cout << " \n operative type        : " << operator_to_word(stst_game.enenoperator);
 cout << " \n correct answers       : " << stst_game.correct_number ;
 cout << " \n wrong answers         : " << stst_game.wrong_number ;
+
+
+cout << " \n \n --------- REVIEW TOUR ANSWERS --------- \n";
+for ( short i = 1 ; i <= stst_game.questions_number ; i ++ )
+cout << " question " << i << " :  you answered " << stst_game.stst_round[i-1].user_ans << " ,  correct answer is " << stst_game.stst_round[i-1].comp_ans << endl ;
 }
 
 void game                   ()                                          
