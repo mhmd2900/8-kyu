@@ -43,7 +43,9 @@ short num1 = 0 ;
 short num2  = 0 ;
 short comp_ans = 0 ;
 short user_ans = 0 ;
-string op ;
+string op ;  // for display
+enoperator op_mark ;  // for dealing
+bool is_correct = false ;  // need in stats
 };
 
 struct st_game 
@@ -79,6 +81,12 @@ st_round stst_round[10] ;
                                                                                 return rand()%( to - from + 1 ) + from ;
                                                                                 }
 
+// Rule of thumb:
+// ➤ If it’s a single int, char, bool, etc. — pass by value (copy is cheap).
+// ➤ If it’s >1 primitive or a struct
+            // ➤ If you’re modifying it     — pass by &.
+            // ➤ If you’re not modifying it — pass by const&.
+
 void show_nums    ( st_round& stst_round , st_game stst_game)  // const st_game& stst_game 
 {
 if (stst_game.enenquestion == enquestion::easy )
@@ -106,10 +114,12 @@ stst_round.num2 = random ( 1 , 170 );
 void show_operator( st_round& stst_round , st_game stst_game)  // const st_game& stst_game 
 {
 if (stst_game.enenoperator == enoperator::all)
-stst_round.op = operator_to_word (enoperator(random(1,4))) ;
+stst_round.op_mark = (enoperator)(random(1,4)) ;
 
 else 
-stst_round.op = operator_to_word(stst_game.enenoperator) ;
+stst_round.op_mark = stst_game.enenoperator ; // dealing with enum in comp_answer is better
+
+stst_round.op = operator_to_word(stst_round.op_mark ); // need string for display
 }
 
 void user_answer    (st_round&  stst_round)
@@ -125,21 +135,31 @@ stst_round.user_ans = number ("" , -4000 , 4000 ) ;
 
 void comp_answer    ( st_round& stst_round)
 {
-if         (stst_round.op == "+" )
+
+switch ( stst_round.op_mark)
+{
+case enoperator::add :
 stst_round.comp_ans = stst_round.num1 + stst_round.num2 ;
-else if    (stst_round.op == "-" )
+break ;
+case enoperator::sub :
 stst_round.comp_ans = stst_round.num1 - stst_round.num2 ;
-else if    (stst_round.op == "*" )
+break ;
+case enoperator::mult :
 stst_round.comp_ans = stst_round.num1 * stst_round.num2 ;
-else if    (stst_round.op == "/" && stst_round.num2 !=0 )
-stst_round.comp_ans = stst_round.num1 / stst_round.num2 ;
-else 
+break ;
+case enoperator::divi :
+stst_round.comp_ans =  stst_round.num2 != 0   ? stst_round.num1 / stst_round.num2 : 0 ;
+break ;
+default  :
 stst_round.comp_ans = 0 ;
+break ;
+}
 }
 
-void correct_wrong  ( st_round stst_round , st_game& stst_game ) // const st_round& stst_round 
+void correct_wrong  ( st_round& stst_round , st_game& stst_game ) // const st_round& stst_round 
 {
-if ( stst_round.user_ans == stst_round.comp_ans )
+stst_round.is_correct = ( stst_round.user_ans == stst_round.comp_ans ) ;
+if ( stst_round.is_correct == true )
 {
 cout << " \n correct answer \n" ;
 system ( " color 2F");
@@ -153,18 +173,12 @@ stst_game.wrong_number ++ ;
 }
 }
 
-// Rule of thumb:
-// ➤ If it’s a single int, char, bool, etc. — pass by value (copy is cheap).
-// ➤ If it’s >1 primitive or a struct
-            // ➤ If you’re modifying it     — pass by &.
-            // ➤ If you’re not modifying it — pass by const&.
-
 void round          ( short count , st_game& stst_game) 
 {
 
 cout << "  \n ============================== \n       Question [" << count << "/"<< stst_game.questions_number << "]" << endl ;
 
-show_nums       ( stst_game.stst_round[count-1] , stst_game) ;
+show_nums       ( stst_game.stst_round[count-1] , stst_game) ; // need both variables as one is array and have different values each loop
 show_operator   ( stst_game.stst_round[count-1] , stst_game) ;
 user_answer     ( stst_game.stst_round[count-1]) ;
 comp_answer     ( stst_game.stst_round[count-1]) ;
@@ -216,13 +230,22 @@ cout << " \n wrong answers         : " << stst_game.wrong_number ;
 
 cout << " \n \n --------- REVIEW TOUR ANSWERS --------- \n";
 for ( short i = 1 ; i <= stst_game.questions_number ; i ++ )
-cout << " question " << i << " :  you answered " << stst_game.stst_round[i-1].user_ans << " ,  correct answer is " << stst_game.stst_round[i-1].comp_ans << endl ;
+{
+cout << " question " << i ;
+cout << " :     you answered  " << stst_game.stst_round[i-1].user_ans  ;
+cout << "   ,  correct answer is  " << stst_game.stst_round[i-1].comp_ans << " \t";
+cout << " ******  your answer is " ;
+if ( stst_game.stst_round[i-1].is_correct)
+cout << " correct \n";
+else 
+cout << " wrong \n";
+}
 }
 
 void game                   ()                                          
 {
 st_game  stst_game ;
-stst_game.questions_number   =                   number (" \n how many questions do you want to answer ? \n" , 1 , 10) ;
+stst_game.questions_number   =                   number (" \n how many questions do you want to answer ? ( maximum 10 ) \n" , 1 , 10) ;
 stst_game.enenquestion       = enquestion       (number (" choose question level    [1]easy  [2]med  [3]hard   [4]mix  \n" , 1 , 4 )) ;
 stst_game.enenoperator       = enoperator       (number (" choose operator  [1]add  [2]sub  [3]mult  [4]divi   [5]all  \n" , 1 , 5 )) ;
 
