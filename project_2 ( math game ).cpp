@@ -4,6 +4,12 @@
 #include<ctime>
 using namespace std ;
 
+void reset_screen ()
+{
+system ("cls");
+system ( "color 0F") ;
+}
+
 enum enquestion { easy = 1 , med = 2 , hard = 3 , mix = 4 };
 enum enoperator { add = 1 , sub = 2 , mult = 3 , divi = 4 , all = 5 };
 enum enpassfail { pass = 1 , fail = 2 , draw = 3 } ;
@@ -239,8 +245,7 @@ if ( cin >> ch && ( ch == 'y' || ch == 'Y'))
 return true ;
 else if ( ch == 'n' || ch == 'N')
 {
-system ("cls");
-system ( "color 0F") ;
+reset_screen();
 return false ;
 }
 
@@ -257,8 +262,7 @@ void restart                                 ()
 {
 do
 {
-system ("cls");
-system ( "color 0F") ;
+reset_screen();
 game();
 } while ( want_to_repeat());
 }
