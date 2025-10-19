@@ -50,13 +50,13 @@ short correct_number = 0 ;
 short wrong_number = 0  ;
 };
 
-                                                                                short number ( string message )
+                                                                                short number ( string message , short from , short to )
                                                                                 {
                                                                                 short num ;
                                                                                 cout << message ;
                                                                                 while ( true )
                                                                                 {
-                                                                                if ( cin >> num )
+                                                                                if ( cin >> num && num >= from && num <= to)
                                                                                 return num ;
                                                                                 else 
                                                                                 {
@@ -112,7 +112,7 @@ cout << stst_round.num1 << endl ;
 cout << stst_round.op  << endl ; 
 cout << stst_round.num2 << endl  ;
 cout << "_______ \n " ;
-stst_round.user_ans = number ("") ;
+stst_round.user_ans = number ("" , -4000 , 4000 ) ;
 
 }
 
@@ -124,8 +124,10 @@ else if    (stst_round.op == "-" )
 stst_round.comp_ans = stst_round.num1 - stst_round.num2 ;
 else if    (stst_round.op == "*" )
 stst_round.comp_ans = stst_round.num1 * stst_round.num2 ;
-else if    (stst_round.op == "/" )
+else if    (stst_round.op == "/" && stst_round.num2 !=0 )
 stst_round.comp_ans = stst_round.num1 / stst_round.num2 ;
+else 
+stst_round.comp_ans = 0 ;
 }
 
 void correct_wrong  ( st_round stst_round , st_game& stst_game ) // const st_round& stst_round 
@@ -191,7 +193,7 @@ system ( " color 4F");
 
 else 
 {
-" DRAW \n_________________________________________________________________\n " ;
+cout << " DRAW \n_________________________________________________________________\n " ;
 system ("color 6 F");
 }
 "_________________________________________________________________\n" ;
@@ -209,9 +211,9 @@ cout << " \n wrong answers         : " << stst_game.wrong_number ;
 void game                   ()                                          
 {
 st_game  stst_game ;
-stst_game.questions_number   =                   number (" \n how many questions do you want to answer ? \n") ;
-stst_game.enenquestion       = enquestion       (number (" choose question level    [1]easy  [2]med  [3]hard   [4]mix  \n") ) ;
-stst_game.enenoperator       = enoperator       (number (" choose operator  [1]add  [2]sub  [3]mult  [4]divi   [5]all  \n") ) ;
+stst_game.questions_number   =                   number (" \n how many questions do you want to answer ? \n" , 1 , 10) ;
+stst_game.enenquestion       = enquestion       (number (" choose question level    [1]easy  [2]med  [3]hard   [4]mix  \n" , 1 , 4 )) ;
+stst_game.enenoperator       = enoperator       (number (" choose operator  [1]add  [2]sub  [3]mult  [4]divi   [5]all  \n" , 1 , 5 )) ;
 
 for ( short i = 1 ; i <= stst_game.questions_number ; i ++ )
 round (i , stst_game);
