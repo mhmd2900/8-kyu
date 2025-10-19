@@ -1,3 +1,10 @@
+
+void reset_screen ()
+{
+system ("cls");
+system ( "color 0F") ;
+}
+
                                                                               //////////////     input random
                                                                               int random ( int from , int to )
                                                                               {
