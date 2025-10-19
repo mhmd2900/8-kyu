@@ -9,24 +9,22 @@
 
 
                                                                               //////////////    input number
-                                                                              float read_number ( string message )
-                                                                              { float f ;
-                                                                              cout << message ;
-                                                                              while ( true)
-                                                                              {
-                                                                                  if ( cin >> f )
-                                                                                  {
-                                                                                  return f ; 
-                                                                                  }
-                                                                              
-                                                                                  else 
-                                                                                  {
-                                                                                  cout << " invalid number ,, plz reenter \n " ;
-                                                                                  cin.clear();
-                                                                                  cin.ignore( 10000 , '\n');
-                                                                                  }
-                                                                              }  
-                                                                              }
+                                                                                short number ( string message , short from , short to )
+                                                                                {
+                                                                                short num ;
+                                                                                cout << message ;
+                                                                                while ( true )
+                                                                                {
+                                                                                if ( cin >> num && num >= from && num <= to)
+                                                                                return num ;
+                                                                                else 
+                                                                                {
+                                                                                cout << " wrong input , repeat ";
+                                                                                cin.clear();
+                                                                                cin.ignore(100 , '\n');
+                                                                                }
+                                                                                }
+                                                                                }
                                                                               
                                                                               
                                                                               
