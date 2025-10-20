@@ -4,11 +4,6 @@
 #include<ctime>
 using namespace std ;
 
-void reset_screen ()
-{
-system ("cls");
-system ( "color 0F") ;
-}
 
 enum enpassfail { pass , fail , draw };
 enum enquestion { easy = 1 , med = 2 , hard = 3 , mix = 4 };
@@ -87,7 +82,7 @@ st_round stst_round[10] ;
             // ➤ If you’re modifying it     — pass by &.
             // ➤ If you’re not modifying it — pass by const&.
 
-void show_nums    ( st_round& stst_round , const st_game& stst_game)  
+void show_nums      ( st_round& stst_round , const st_game& stst_game)  
 {
 if (stst_game.enenquestion == enquestion::easy )
 {
@@ -111,7 +106,7 @@ stst_round.num2 = random ( 1 , 170 );
 }
 }                                                                             
 
-void show_operator( st_round& stst_round , const st_game& stst_game)  
+void show_operator  ( st_round& stst_round , const st_game& stst_game)  
 {
 if (stst_game.enenoperator == enoperator::all)  // transfer enum from game struct to round struct for simplicity  // transfer to enum and string
 stst_round.op_mark = (enoperator)(random(1,4)) ; // int to enum ( store & better to check later )
@@ -122,7 +117,7 @@ stst_round.op_mark = stst_game.enenoperator ;
 stst_round.op = operator_to_word(stst_round.op_mark ); // enum to string ( display here ) 
 }
 
-void user_answer    ( st_round&  stst_round)
+void user_answer    ( st_round& stst_round)
 {
 
 cout << stst_round.num1 << endl ;
@@ -148,7 +143,7 @@ case enoperator::mult :
 stst_round.comp_ans = stst_round.num1 * stst_round.num2 ;
 break ;
 case enoperator::divi :
-stst_round.comp_ans =  stst_round.num2 != 0   ? stst_round.num1 / stst_round.num2  : 0 ;
+stst_round.comp_ans =  ( stst_round.num2 != 0 ) ? stst_round.num1 / stst_round.num2  : 0 ;
 break ;
 default  :
 stst_round.comp_ans = 0 ;
@@ -255,6 +250,12 @@ round (i , stst_game);
 pass_or_fail(stst_game) ;
 print__pass_or_fail (stst_game) ;
 stats ( stst_game) ;
+}
+
+void reset_screen                            ()
+{
+system ("cls");
+system ( "color 0F") ;
 }
 
 bool want_to_repeat                          ()
