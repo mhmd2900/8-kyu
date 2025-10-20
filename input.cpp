@@ -1,3 +1,16 @@
+// #include <iostream>
+// #include <string>
+// #include <cstdlib>
+// #include <ctime>
+// #include <limits>
+
+// using std::cin;
+// using std::cout;
+// using std::numeric_limits;
+// using std::streamsize;
+
+
+
 
 void reset_screen ()
 {
@@ -29,6 +42,8 @@ system ( "color 0F") ;
                                                                                 cout << " wrong input , repeat ";
                                                                                 cin.clear();
                                                                                 cin.ignore( numeric_limits<streamsize>::max() , '\n');
+                                                                                  // must include<limits>
+                                                                                  // must use namespace std
                                                                                 }
                                                                                 }
                                                                                 }
