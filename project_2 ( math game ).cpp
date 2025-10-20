@@ -10,17 +10,17 @@ system ("cls");
 system ( "color 0F") ;
 }
 
+enum enpassfail { pass , fail , draw };
 enum enquestion { easy = 1 , med = 2 , hard = 3 , mix = 4 };
 enum enoperator { add = 1 , sub = 2 , mult = 3 , divi = 4 , all = 5 };
-enum enpassfail { pass = 1 , fail = 2 , draw = 3 } ;
 
-string level_to_word (enquestion enenquestion )
+string level_to_word (enquestion enenquestion )      // display enum
 {
 string word[4] = { "easy" , "med" , "hard" , "mix"};
 return word [ enenquestion - 1 ];
 }
 
-string operator_to_word (enoperator enenoperator )
+string operator_to_word (enoperator enenoperator )   // display enum
 {
 switch ( enenoperator )
 {
@@ -39,13 +39,13 @@ return "all" ;
 
 struct st_round 
 {
-short num1 = 0 ;
+short num1 = 0 ;    // short is better than int
 short num2  = 0 ;
 short comp_ans = 0 ;
 short user_ans = 0 ;
-string op ;  // for display
-enoperator op_mark ;  // for dealing
-bool is_correct = false ;  // need in stats
+string op ;  // for display    ,, used in 2-benefits function
+enoperator op_mark ;  // for dealing    ,, used in 2-benefits function
+bool is_correct = false ;  // need in stats    ,, used in 2-benefits function
 };
 
 struct st_game 
@@ -87,7 +87,7 @@ st_round stst_round[10] ;
             // ➤ If you’re modifying it     — pass by &.
             // ➤ If you’re not modifying it — pass by const&.
 
-void show_nums    ( st_round& stst_round , st_game stst_game)  // const st_game& stst_game 
+void show_nums    ( st_round& stst_round , const st_game& stst_game)  
 {
 if (stst_game.enenquestion == enquestion::easy )
 {
@@ -111,18 +111,18 @@ stst_round.num2 = random ( 1 , 170 );
 }
 }                                                                             
 
-void show_operator( st_round& stst_round , st_game stst_game)  // const st_game& stst_game 
+void show_operator( st_round& stst_round , const st_game& stst_game)  
 {
-if (stst_game.enenoperator == enoperator::all)
-stst_round.op_mark = (enoperator)(random(1,4)) ;
+if (stst_game.enenoperator == enoperator::all)  // transfer enum from game struct to round struct for simplicity  // transfer to enum and string
+stst_round.op_mark = (enoperator)(random(1,4)) ; // int to enum ( store & better to check later )
 
 else 
-stst_round.op_mark = stst_game.enenoperator ; // dealing with enum in comp_answer is better
+stst_round.op_mark = stst_game.enenoperator ; 
 
-stst_round.op = operator_to_word(stst_round.op_mark ); // need string for display
+stst_round.op = operator_to_word(stst_round.op_mark ); // enum to string ( display here ) 
 }
 
-void user_answer    (st_round&  stst_round)
+void user_answer    ( st_round&  stst_round)
 {
 
 cout << stst_round.num1 << endl ;
@@ -136,7 +136,7 @@ stst_round.user_ans = number ("" , -4000 , 4000 ) ;
 void comp_answer    ( st_round& stst_round)
 {
 
-switch ( stst_round.op_mark)
+switch ( stst_round.op_mark)  // check enum ( better than string )
 {
 case enoperator::add :
 stst_round.comp_ans = stst_round.num1 + stst_round.num2 ;
@@ -148,7 +148,7 @@ case enoperator::mult :
 stst_round.comp_ans = stst_round.num1 * stst_round.num2 ;
 break ;
 case enoperator::divi :
-stst_round.comp_ans =  stst_round.num2 != 0   ? stst_round.num1 / stst_round.num2 : 0 ;
+stst_round.comp_ans =  stst_round.num2 != 0   ? stst_round.num1 / stst_round.num2  : 0 ;
 break ;
 default  :
 stst_round.comp_ans = 0 ;
@@ -156,7 +156,7 @@ break ;
 }
 }
 
-void correct_wrong  ( st_round& stst_round , st_game& stst_game ) // const st_round& stst_round 
+void correct_wrong  ( st_round& stst_round , st_game& stst_game ) 
 {
 stst_round.is_correct = ( stst_round.user_ans == stst_round.comp_ans ) ;
 if ( stst_round.is_correct == true )
@@ -195,7 +195,7 @@ else
 stst_game.enpasser = enpassfail::draw ;
 }
 
-void print__pass_or_fail    ( st_game stst_game )
+void print__pass_or_fail    ( const st_game& stst_game )
 {
 cout << "_________________________________________________________________\n";
 cout << " final result is ";
@@ -219,7 +219,7 @@ system ("color 6F");
 "_________________________________________________________________\n" ;
 }
 
-void stats                  ( st_game stst_game )
+void stats                  ( const st_game& stst_game )
 {
 cout << " \n number of questions   : " << stst_game.questions_number ;
 cout << " \n question level        : " << level_to_word   (stst_game.enenquestion) ;
@@ -246,8 +246,8 @@ void game                   ()
 {
 st_game  stst_game ;
 stst_game.questions_number   =                   number (" \n how many questions do you want to answer ? ( maximum 10 ) \n" , 1 , 10) ;
-stst_game.enenquestion       = enquestion       (number (" choose question level    [1]easy  [2]med  [3]hard   [4]mix  \n" , 1 , 4 )) ;
-stst_game.enenoperator       = enoperator       (number (" choose operator  [1]add  [2]sub  [3]mult  [4]divi   [5]all  \n" , 1 , 5 )) ;
+stst_game.enenquestion       = enquestion       (number (" choose question level    [1]easy  [2]med  [3]hard   [4]mix  \n"  , 1 , 4 )) ;
+stst_game.enenoperator       = enoperator       (number (" choose operator  [1]add  [2]sub  [3]mult  [4]divi   [5]all  \n"  , 1 , 5 )) ;
 
 for ( short i = 1 ; i <= stst_game.questions_number ; i ++ )
 round (i , stst_game);
