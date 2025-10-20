@@ -28,7 +28,7 @@ system ( "color 0F") ;
                                                                                 {
                                                                                 cout << " wrong input , repeat ";
                                                                                 cin.clear();
-                                                                                cin.ignore(100 , '\n');
+                                                                                cin.ignore(10000 , '\n');
                                                                                 }
                                                                                 }
                                                                                 }
