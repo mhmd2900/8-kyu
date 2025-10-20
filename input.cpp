@@ -16,9 +16,9 @@ system ( "color 0F") ;
 
 
                                                                               //////////////    input number
-                                                                                short number ( string message , short from , short to )
+                                                                                int number ( string message , short from , short to )
                                                                                 {
-                                                                                short num ;
+                                                                                int num ;
                                                                                 cout << message ;
                                                                                 while ( true )
                                                                                 {
@@ -28,7 +28,7 @@ system ( "color 0F") ;
                                                                                 {
                                                                                 cout << " wrong input , repeat ";
                                                                                 cin.clear();
-                                                                                cin.ignore(10000 , '\n');
+                                                                                cin.ignore( numeric_limits<streamsize>::max() , '\n');
                                                                                 }
                                                                                 }
                                                                                 }
