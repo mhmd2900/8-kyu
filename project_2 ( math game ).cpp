@@ -265,7 +265,7 @@ char ch ;
 cout << " Do you want to repeat , if yes press [y] , if no press [n] \n";
 while ( true )
 {
-if ( ch == 'y' || ch == 'Y')
+if ( cin >> ch && (ch == 'y' || ch == 'Y' ))
 return true ;
 else if ( ch == 'n' || ch == 'N')
 {
