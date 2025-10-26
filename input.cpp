@@ -1,8 +1,9 @@
 // #include <iostream>
 // #include <string>
-// #include <cstdlib>
-// #include <ctime>
-// #include <limits>
+// #include <cstdlib> // random
+// #include <ctime>  // random
+// #include <limits>   // inpit number
+// using namespace std ;
 
 // using std::cin;
 // using std::cout;
