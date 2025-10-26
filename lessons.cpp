@@ -15,3 +15,11 @@ char letter = 'm';
 printf(" my name is %s \n " , name );  // my name is mhmd
 printf(" my letter is %*c \n " , 2 , letter) ;  // my letter is  m
 printf(" my letter is %*c \n " , 6 , letter) ;  // my letter is       m
+
+
+#include<iomanip>
+cout << "_______________________________________ \n";
+cout << "| name |           grade       | end  | \n";
+cout << "|______|_______________________|______| \n";
+cout << "|" << setw(6) << "mhmd" <<"|"<< setw(23) << " very good " << "|" << setw(6) << "pass " << "|\n" ;
+cout << "|______|_______________________|______| \n";
