@@ -107,5 +107,6 @@ p = &ststdata
  void * p ;
 int x = 10 ;
 p = & x ;
-cout << p << endl ;                                address
-cout << *(static_cast<int*>(p));                   value
+cout << p << endl ;                                  address
+cout << *(static_cast<int*>(p));                     value after casting
+cout << (static_cast<stdata*>(p)->age);              value after casting
