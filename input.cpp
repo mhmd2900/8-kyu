@@ -104,6 +104,8 @@ else if ( ch =='n' || ch == 'N')
 return false ;
 cout << " plz only enter y or n , thank you   \n" ;
 cin.clear();
-cin.ignore( numeric_limits<streamsize>::max(), '\n');
+// cout << " input can not be empty !  ,  and EOF is not allowed \n"; // should only if user invalid input
+// commented as during 2nd recall of this function
+// there is no way to diff. between user invalid input or remaining \n ( both not meet the condition )
 }
 }
