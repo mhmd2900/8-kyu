@@ -59,9 +59,11 @@ vector<int> nums = {1, 2, 3};     // ✅ Definition + Initialization (via initia
 vector<int> nums(2);              // ✅ Definition + Initialization (via size constructor)
 nums[0] = 33;                     // ⚠️ This is ASSIGNMENT (mutation after initialization)
 
-// 3. Default Constructor → Initializes empty vector
+// 3. Fill Constructor → Initializes N copies of given value
+vector<int> nums(3, 99);          // ✅ Definition + Initialization (via fill constructor → [99,99,99])
+
+// 4. Default Constructor → Initializes empty vector
 vector<int> nums;                 // ✅ Definition + Initialization (default constructor → size=0)
 nums.push_back(44);               // ⚠️ This is MUTATION (dynamic growth after initialization)
 
-// 4. Fill Constructor → Initializes N copies of given value
-vector<int> nums(3, 99);          // ✅ Definition + Initialization (via fill constructor → [99,99,99])
+
