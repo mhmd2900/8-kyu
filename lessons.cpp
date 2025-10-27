@@ -104,9 +104,9 @@ p = &ststdata
 (*p).name   = p->name    = ststdata.name                              value        
 &(*p).name   = & p->name  = & ststdata.name  = p = &ststdata          address       
 
- void * p ;
+void * p ;
 int x = 10 ;
 p = & x ;
 cout << p << endl ;                                  address
-cout << *(static_cast<int*>(p));                     value after casting
-cout << (static_cast<stdata*>(p)->age);              value after casting
+cout << *(static_cast<int*>(p));                     value after casting  // p is address  , so need * to extract the value
+cout << (static_cast<stdata*>(p)->age);              value after casting  // (p)->age  is a value  , no need for *
