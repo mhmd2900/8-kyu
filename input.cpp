@@ -90,4 +90,20 @@ system ( "color 0F") ;
                                                                                       }
                                                                                   }
                                                                               }
-                                                                             
+
+///////////////  want to repeat
+bool want_to_repeat ()
+{
+cout << " repeat ?   [y/n] \n";
+char ch ;
+while ( true )
+{
+if ( cin>>ch && ( ch =='y' || ch == 'Y'))
+return true ;
+else if ( ch =='n' || ch == 'N')
+return false ;
+cout << " plz only enter y or n , thank you   \n"
+cin.clear();
+cin.ignore( numeric_limits<streamsize>::max(), '\n');
+}
+}
