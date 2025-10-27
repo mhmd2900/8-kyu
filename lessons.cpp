@@ -21,6 +21,7 @@ double f = 4.123456 ;
 printf(" the a = %d \n " ,  a ) ;   // 5
 printf(" also a equals = %0*d \n \n  " , 2  , a ) ; // 05
 printf(" also a equals = %0*d \n \n  " , 2  , u ) ; // 50
+printf(" also a equals = %02d \n \n  " , u ) ; // 50
 
 printf ( " the d = %.4f \n" ,   d );  // 2.0000
 printf ( " the d = %.4f \n" ,   f );   // 4.1235
@@ -85,3 +86,20 @@ nums.push_back(44);               // ⚠️ This is MUTATION (dynamic growth aft
 // vstdata.push_back({"www","mmm", 55});
 // cout << vstdata[1].last_name ;          // mmm
 
+
+
+/////////////////////////  pointers
+int * p ;
+ststdata * p ;
+
+
+*p = x ;                                          value
+p = &x ;                                          address
+
+p = arr ;
+*p = arr[0];      *(p + 1) = arr[1] ;             value
+ p = &(arr[0]) ;    p + 1 = &(arr[1]) ;           address
+
+p = &ststdata 
+(*p).name   = p->name    = ststdata.name                              value        
+&(*p).name   = & p->name  = & ststdata.name  = p = &ststdata          address       
