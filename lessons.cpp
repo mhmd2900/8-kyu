@@ -4,8 +4,8 @@
 auto start = std::chrono::steady_clock::now();  // Start timer
 
 auto end = std::chrono::steady_clock::now();    // Stop timer
-auto mic_sec = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();     // Calculate and print time in microseconds
-cout << " \n \n Time: " << mic_sec << " µs\n";
+auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();     // Calculate and print time in microseconds
+cout << " \n \n Time: " << ms << " µs\n";
 
 
 
