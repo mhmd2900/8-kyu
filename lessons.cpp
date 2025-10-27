@@ -103,3 +103,9 @@ p = arr ;
 p = &ststdata 
 (*p).name   = p->name    = ststdata.name                              value        
 &(*p).name   = & p->name  = & ststdata.name  = p = &ststdata          address       
+
+ void * p ;
+int x = 10 ;
+p = & x ;
+cout << p << endl ;                                address
+cout << *(static_cast<int*>(p));                   value
