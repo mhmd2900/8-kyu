@@ -1,3 +1,4 @@
+////////////////////    printf
 int a = 5 ;
 float d = 2.0 ;
 int u = 50 ;
@@ -19,9 +20,26 @@ printf(" my letter is %*c \n " , 2 , letter) ;  // my letter is  m
 printf(" my letter is %*c \n " , 6 , letter) ;  // my letter is       m
 
 
+
+//////////////////   setw
 #include<iomanip>
 cout << "_______________________________________ \n";
 cout << "| name |           grade       | end  | \n";
 cout << "|______|_______________________|______| \n";
 cout << "|" << setw(6) << "mhmd" <<"|"<< setw(23) << " very good " << "|" << setw(6) << "pass " << "|\n" ;
 cout << "|______|_______________________|______| \n";
+
+
+
+////////////////  array vs vector function
+bool fun ( int arr []  ,  int num    , const vector<int>& vv   )
+{
+return arr[num] = vv[0];
+}
+
+
+int arr[4] = { 0,1,2 ,3};
+arr [3] = 3 ;
+vector<int>vv = { 3 , 4 , 5 , 6 };
+
+cout << fun ( arr , arr[3] , vv ) ;
