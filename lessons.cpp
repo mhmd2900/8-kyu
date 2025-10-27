@@ -65,5 +65,8 @@ vector<int> nums(3, 99);          // ✅ Definition + Initialization (via fill c
 // 4. Default Constructor → Initializes empty vector
 vector<int> nums;                 // ✅ Definition + Initialization (default constructor → size=0)
 nums.push_back(44);               // ⚠️ This is MUTATION (dynamic growth after initialization)
-
+// vector<stdata>vstdata ;
+// vstdata.push_back({"aa","bbb", 12});
+// vstdata.push_back({"www","mmm", 55});
+// cout << vstdata[1].last_name ;          // mmm
 
