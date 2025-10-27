@@ -31,33 +31,44 @@ system ( "color 0F") ;
                                                                               //////////////    input number
                                                                                 int number ( string message , short from , short to )
                                                                                 {
-                                                                                int num ;
                                                                                 cout << message ;
+                                                                                int num ;
                                                                                 while ( true )
                                                                                 {
                                                                                 if ( cin >> num && num >= from && num <= to)
                                                                                 return num ;
-                                                                                else 
-                                                                                {
+                                                                                  
                                                                                 cout << " wrong input , repeat ";
                                                                                 cin.clear();
                                                                                 cin.ignore( numeric_limits<streamsize>::max() , '\n');
-                                                                                  // must include<limits>
-                                                                                  // must use namespace std
                                                                                 }
                                                                                 }
+
+
+                                                                                ///////////////////////////    input string
+                                                                                string word ( string message )
+                                                                                {
+                                                                                cout << message ;
+                                                                                string pass ; 
+                                                                                while ( true )
+                                                                                {     
+                                                                                
+                                                                                if (getline(cin, pass) && !pass.empty())  // getline succeded + not empty
+                                                                                return pass;
+                                                                                
+                                                                                //← getline succeded + empty    OR    FAILED (eof, failbit) + empty 
+                                                                                cin.clear();
+                                                                                cout << " input can not be empty !  ,  and EOF is not allowed \n";
                                                                                 }
-                                                                              
-                                                                              
+                                                                                }
                                                                               
                                                                               
                                                                               ///////////////////    input string ( charchters )
-                                                                              
                                                                               string read ( string message )
-                                                                              {
+                                                                              {  
+                                                                                  cout << message ;
                                                                                   string password ;
                                                                                   char ch ;
-                                                                                  cout << message ;
                                                                                   while (true)
                                                                                   {
                                                                                       while ( cin.get(ch) )
@@ -79,8 +90,4 @@ system ( "color 0F") ;
                                                                                       }
                                                                                   }
                                                                               }
-
-
-
-                                                                                }
-
+                                                                             
