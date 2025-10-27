@@ -32,7 +32,7 @@ cout << "|______|_______________________|______| \n";
 
 
 ////////////////  array vs vector function
-bool fun ( int arr []  ,  int num    , const vector<int>& vv   )
+bool fun ( int arr []  ,  int num    , const vector<int>& vv   )  // array is & by default
 {
 return arr[num] = vv[0];
 }
