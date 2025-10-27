@@ -10,13 +10,6 @@
 // using std::numeric_limits;
 // using std::streamsize;
 
-#include<chrono>
-auto start = std::chrono::steady_clock::now();  // Start timer
-auto end = std::chrono::steady_clock::now();    // Stop timer
-
-// Calculate and print time in microseconds
-auto us = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
-std::cout << " \n \n Time: " << us << " µs\n";
 
 
 void reset_screen ()
