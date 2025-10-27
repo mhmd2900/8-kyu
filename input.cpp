@@ -40,7 +40,7 @@ system ( "color 0F") ;
                                                                                   
                                                                                 cout << " wrong input , repeat ";
                                                                                 cin.clear();
-                                                                                cin.ignore( numeric_limits<streamsize>::max() , '\n');
+                                                                                cin.ignore( numeric_limits<streamsize>::max() , '\n');// // ctrl z + cin.ignore >> write 2 inputs
                                                                                 }
                                                                                 }
 
