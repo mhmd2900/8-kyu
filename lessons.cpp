@@ -89,24 +89,27 @@ nums.push_back(44);               // ⚠️ This is MUTATION (dynamic growth aft
 
 
 /////////////////////////  pointers
-int * p ;
-ststdata * p ;
+int a = 10 , *p , arr[]= { 10,20,30,40} , *pp ;
+stdata ststdata , *ppp ;  
+stdata stststdata ;
+void *pppp , *ppppp ;
+p = &a ;
+pp = arr ;
+ppp = &ststdata ;
+pppp = &a ;
+ppppp = &ststdata.age;
 
 
-*p = x ;                                          value
-p = &x ;                                          address
+p = &a = pppp ;                                                          address
+*p = a = *static_cast<int*>(pppp)  ;                                     value
 
-p = arr ;
-*p = arr[0];      *(p + 1) = arr[1] ;             value
- p = &(arr[0]) ;    p + 1 = &(arr[1]) ;           address
+pp = arr = &arr[0]            pp +1 = arr +1 = &arr[1]                                        address   any element                  
+*pp = *arr = arr[0]           *(pp+1) = *(arr+1) = arr[1]                                      value     any
 
-p = &ststdata 
-(*p).name   = p->name    = ststdata.name                              value        
-&(*p).name   = & p->name  = & ststdata.name  = p = &ststdata          address       
-
-void * p ;
-int x = 10 ;
-p = & x ;
-cout << p << endl ;                                  address
-cout << *(static_cast<int*>(p));                     value after casting  // p is address  , so need * to extract the value
-cout << (static_cast<stdata*>(p)->age);              value after casting  // (p)->age  is a value  , no need for *
+ppp =          &(*ppp).name    = &ppp->name      = &ststdata     = &ststdata.name                            address  1st element
+(*ppp).name   = ppp->name      = ststdata.name   = static_cast<stdata*>(ppppp)->name                         value    1st      
+// struct pointer point to structure and 1st element
+// specific type pointer e.g int , sting , ...  points to specific element
+// void pointer points to struct or element , to give value must be casted to struct or specific type
+// .... if casted to struct , just choose element as extension e.g (ppppp)->name and no * at beginning
+// struct pointer + 1 equals struct address + struct size ( not mandatory to be coming object in same struct )
