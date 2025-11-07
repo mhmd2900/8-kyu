@@ -38,7 +38,7 @@
                                                                                     void swaps ( int arr[] , int size )
                                                                                     {
                                                                                     for ( int i = 0 ; i < size ; i ++)
-                                                                                    swap (       arr [ random ( 0 , size -1 ) ]     ,     arr [ random ( 0 , size -1 ) ]       ) ;
+                                                                                    swap (       arr [ input_random ( 0 , size -1 ) ]     ,     arr [ input_random( 0 , size -1 ) ]       ) ;
                                                                                     }
 
 
