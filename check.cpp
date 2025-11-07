@@ -26,12 +26,35 @@ vector<int>vtemp ( max , 0) ;
     for ( int x = i*i  ; x < max   ; x+=i ) 
     vtemp[x] = 1 ;
     }
-
     // convert indices of uncorrupted values ( given 0 ) to values and push in a vector
 for ( int z = min ; z < max ; z++)
 if ( z >= 2 && vtemp[z] == 0 )      
 vnum.push_back(z);
 }
+
+
+
+
+
+/////////////////////////////////////  check square root  babylion
+void sqrr(double num)
+{
+ double g = num/2 ;  // initial guess
+ double prev_g ;
+ double err = 0.0001 ;
+
+ do 
+ {
+ prev_g = g ;
+ g = ( g + num/g) /2 ;
+ }while ( fabs(g - prev_g)> err) ;
+
+cout << g ;
+ }
+
+
+
+
 
 
 
