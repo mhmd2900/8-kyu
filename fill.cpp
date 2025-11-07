@@ -18,7 +18,7 @@
                                                                                     void make_array ( int arr[] , int size)
                                                                                     {
                                                                                     for ( int i = 0 ; i < size ; i ++ )
-                                                                                     arr[i] = input_number(" plz enter number \n");
+                                                                                     arr[i] = mlib::input_number(" plz enter number \n");
                                                                                     }
                                                                                     
 
