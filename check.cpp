@@ -12,6 +12,30 @@ bool check_prime ( int num )
 }
 
 
+
+
+//////////////// check prime in range        Sieve of Eratosthenes
+void check_prime_inrange  ( vector<int>&vnum , int min , int max )   
+{
+vector<int>vtemp ( max , 0) ;   
+
+     // corrupt values of certain indices ( give 1 )
+ for ( int i = 2    ; i < sqrt(max) ; i++  ) // avoid redundant max/2
+ if (vtemp[i] == 0)   // avoid redundant composite numbers  e.g   8 is multiple of 2 and 4 
+    {
+    for ( int x = i*i  ; x < max   ; x+=i ) 
+    vtemp[x] = 1 ;
+    }
+
+    // convert indices of uncorrupted values ( given 0 ) to values and push in a vector
+for ( int z = min ; z < max ; z++)
+if ( z >= 2 && vtemp[z] == 0 )      
+vnum.push_back(z);
+}
+
+
+
+
 ////////////// check distinct number ( copy repeated number only in 1st appearance )
 bool check ( int number , int arr [] , int index)
 {
