@@ -1,16 +1,16 @@
 
                                                                                    //////////////////////////   make array one by one    ( random or user )
-                                                                                    void copy ( int numb , int arr2[] , int& index )
+                                                                                    void fill_array ( int numb , int arr2[] , int& index )
                                                                                     {
                                                                                       arr2[index] = numb  ;
                                                                                       index ++ ;
-                                                                                    }// index = 0 in  int main 
+                                                                                    }// index = 0     in int main 
 
-                                                                                    void copycopy (int arr1[] ,int arr2[] ,int size ,int& index )
+                                                                                    void split_array (int arr1[] ,int arr2[] ,int size ,int& index )
                                                                                     {
                                                                                     for ( int i = 0 ; i < size ; i ++ )
                                                                                     if (check_prime(arr1[i])) // if needed
-                                                                                    copy ( arr1[i] , arr2 , index );
+                                                                                    fill_array ( arr1[i] , arr2 , index );
                                                                                     }
 
 
@@ -38,7 +38,7 @@
                                                                                     void swaps ( int arr[] , int size )
                                                                                     {
                                                                                     for ( int i = 0 ; i < size ; i ++)
-                                                                                    swap (         arr[random(1 , size ) -1 ]      ,       arr[random(1  , size  )-1 ]         ) ;
+                                                                                    swap (       arr [ random ( 0 , size -1 ) ]     ,     arr [ random ( 0 , size -1 ) ]       ) ;
                                                                                     }
 
 
@@ -76,7 +76,7 @@
 
 
 ///////////////////////             print array
-void print ( int arr[] , int size )
+void print_array ( int arr[] , int size )
 {
 for ( int i= 0 ; i < size ; i ++ )
  cout << arr[i] << " \t" ;
