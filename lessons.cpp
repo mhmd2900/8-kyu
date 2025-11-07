@@ -1,4 +1,9 @@
 
+
+// vector<int> vtemp [max] ;    array of vectors
+
+
+
 ////////////////////    timer
 #include<chrono>
 auto start = std::chrono::steady_clock::now();  // Start timer
