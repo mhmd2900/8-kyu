@@ -19,7 +19,7 @@ system ( "color 0F") ;
 }
 
                                                                               //////////////     input random
-                                                                              int random ( int from , int to )
+                                                                              int input_random ( int from , int to )
                                                                               {
                                                                                 return rand()%( to - from + 1)+from ;
                                                                               }
@@ -29,7 +29,7 @@ system ( "color 0F") ;
 
 
                                                                               //////////////    input number
-                                                                                int number ( string message , int from , int to )
+                                                                                int input_number ( string message , int from , int to )
                                                                                 {
                                                                                 cout << message ;
                                                                                 int num ;
@@ -46,7 +46,7 @@ system ( "color 0F") ;
                                                                                
 
                                                                                 ///////////////////////////    input string
-                                                                                string word ( string message )
+                                                                                string input_word ( string message )
                                                                                 {
                                                                                 cout << message ;
                                                                                 string pass ; 
@@ -64,7 +64,7 @@ system ( "color 0F") ;
                                                                               
                                                                               
                                                                               ///////////////////    input string ( charchters )
-                                                                              string read ( string message )
+                                                                              string input_wordch ( string message )
                                                                               {  
                                                                                   cout << message ;
                                                                                   string password ;
