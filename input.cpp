@@ -2,7 +2,7 @@
 // #include <string>
 // #include <cstdlib> // random
 // #include <ctime>  // random
-// #include <limits>   // inpit number
+// #include <limits>   // input number
 // using namespace std ;
 
 // using std::cin;
@@ -29,7 +29,7 @@ system ( "color 0F") ;
 
 
                                                                               //////////////    input number
-                                                                                int number ( string message , short from , short to )
+                                                                                int number ( string message , int from , int to )
                                                                                 {
                                                                                 cout << message ;
                                                                                 int num ;
@@ -43,7 +43,7 @@ system ( "color 0F") ;
                                                                                 cin.ignore( numeric_limits<streamsize>::max() , '\n');// // ctrl z + cin.ignore >> write 2 inputs
                                                                                 }
                                                                                 }
-
+                                                                               
 
                                                                                 ///////////////////////////    input string
                                                                                 string word ( string message )
@@ -85,8 +85,8 @@ system ( "color 0F") ;
                                                                               
                                                                                       else 
                                                                                       {
-                                                                                      cout << " empty password , not acceted , repeat \n" ;
                                                                                       cin.clear();
+                                                                                      cout << " empty password , not acceted , repeat \n" ;
                                                                                       }
                                                                                   }
                                                                               }
@@ -94,7 +94,7 @@ system ( "color 0F") ;
 ///////////////  want to repeat
 bool want_to_repeat ()
 {
-cout << " repeat ?   [y/n] \n";
+cout << " Do you want to repeat ?   [y/n] \n";
 char ch ;
 while ( true )
 {
@@ -102,10 +102,11 @@ if ( cin>>ch && ( ch =='y' || ch == 'Y'))
 return true ;
 else if ( ch =='n' || ch == 'N')
 return false ;
-cout << " plz only enter y or n , thank you   \n" ;
+  
 cin.clear();
-// cout << " input can not be empty !  ,  and EOF is not allowed \n"; // should only if user invalid input
-// commented as during 2nd recall of this function
+cout << " plz only enter y or n   , thank you   \n" ;
+// cout << " input can not be empty !  ,  and EOF is not allowed \n"; // used only if invalid user input
+// but , during 2nd recall of this function
 // there is no way to diff. between user invalid input or remaining \n ( both not meet the condition )
 }
 }
