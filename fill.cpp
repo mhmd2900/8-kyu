@@ -9,7 +9,7 @@
                                                                                     void split_array (int arr1[] ,int arr2[] ,int size ,int& index )
                                                                                     {
                                                                                     for ( int i = 0 ; i < size ; i ++ )
-                                                                                    if (check_prime(arr1[i])) // if needed
+                                                                                    if (mlib::check_prime(arr1[i])) // if needed
                                                                                     fill_array ( arr1[i] , arr2 , index );
                                                                                     }
 
