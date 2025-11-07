@@ -18,7 +18,7 @@
                                                                                     void make_array ( int arr[] , int size)
                                                                                     {
                                                                                     for ( int i = 0 ; i < size ; i ++ )
-                                                                                     arr[i] = mlib::input_number(" plz enter number \n");
+                                                                                     arr[i] = mlib::input_number(" plz enter number \n" , 1 , 100 );
                                                                                     }
                                                                                     
 
@@ -38,7 +38,7 @@
                                                                                     void swaps ( int arr[] , int size )
                                                                                     {
                                                                                     for ( int i = 0 ; i < size ; i ++)
-                                                                                    swap (       arr [ input_random ( 0 , size -1 ) ]     ,     arr [ input_random( 0 , size -1 ) ]       ) ;
+                                                                                    swap (       arr [ mlib::input_random ( 0 , size -1 ) ]     ,     arr [ mlib::input_random( 0 , size -1 ) ]       ) ;
                                                                                     }
 
 
