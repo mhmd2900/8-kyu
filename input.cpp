@@ -1,5 +1,6 @@
 // #include <iostream>
 // #include <string>
+// #include <vector>
 // #include <cstdlib> // random
 // #include <ctime>  // random
 // #include <limits>   // input number
