@@ -3,6 +3,7 @@
 // #include <cstdlib> // random
 // #include <ctime>  // random
 // #include <limits>   // input number
+// #include<cmath>   // for sqrt used in prime numbers
 // using namespace std ;
 
 // using std::cin;
