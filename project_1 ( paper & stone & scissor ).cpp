@@ -85,7 +85,7 @@ enplayers final_winner ;
 
 void game_over ()
 {
-cout << "                                 ____________________________________________________________ \n " ;
+cout << "\n                                  ____________________________________________________________ \n " ;
 cout << "                                                   +++ GAME OVER +++                          \n " ;
 cout << "                                 _____________________________________________________________ \n " ;
 cout << "                                 __________________ [ GAME RESULTS ]__________________________ \n " ;
@@ -152,10 +152,10 @@ cout << " \n round winner is " << choice_to_player(ststround.winner) ;
 void each_round ( st_gamestats& stst_gamestats )
 {
 stround ststround ;
-ststround.pl1_choose = (enchoices)input_choice ( " \n write your choice \n");
+ststround.pl1_choose  = (enchoices)input_choice ( "\n \n write your choice \n");
 ststround.comp_choose = (enchoices)input_random ( 1 , 3 );
-cout << " pl1 choose "      << choice_to_word( ststround.pl1_choose) ;
-cout << " \n comp  choose " <<  choice_to_word(ststround.comp_choose ) ;
+cout << " \n pl1 choose   " <<  choice_to_word( ststround.pl1_choose  ) ;
+cout << " \n comp  choose " <<  choice_to_word( ststround.comp_choose ) ;
 winning_rule(ststround) ;
 color_rule(ststround , stst_gamestats) ;
 }
@@ -172,16 +172,16 @@ each_round(stst_gamestats ) ;
 
 game_over();
 
-cout <<" \n number of rounds " <<stst_gamestats.count;
-cout <<" \n player 1 wins  " <<stst_gamestats.pl1_win;
-cout <<" \n computer wins  " <<stst_gamestats.comp_win;
-cout <<" \n no winner times " <<stst_gamestats.draw_win;
+cout <<" \n number of rounds "   <<stst_gamestats.count;
+cout <<" \n player 1 wins    "   <<stst_gamestats.pl1_win;
+cout <<" \n computer wins    "   <<stst_gamestats.comp_win;
+cout <<" \n no winner times  "   <<stst_gamestats.draw_win;
 if ( stst_gamestats.pl1_win > stst_gamestats.comp_win)
 stst_gamestats.final_winner   = enplayers::pl1 ;
 else if ( stst_gamestats.pl1_win < stst_gamestats.comp_win)
 stst_gamestats.final_winner   = enplayers::comp ;
 else
-stst_gamestats.final_winner  = enplayers::draw ;
+stst_gamestats.final_winner   = enplayers::draw ;
 cout << " \n final winner is " << choice_to_player(stst_gamestats.final_winner ) ;
 
 }
@@ -204,6 +204,7 @@ srand((unsigned)time(NULL));
 game_start();
 return 0;
 }
+
 
 
 
