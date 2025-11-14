@@ -1,11 +1,10 @@
 // #include <iostream>
 // #include <string>
 // #include <vector>
-// #include <cmath>  // fabs for sqrr
-// #include <cstdlib> // random
-// #include <ctime>  // random
 // #include <limits>   // input number
-// #include<cmath>   // for sqrt used in prime numbers
+// #include <cstdlib>  // random
+// #include <ctime>    // random
+// #include <cmath>    // for sqrt used in prime numbers ,, fabs for sqrr
 // using namespace std ;
 
 // using std::cin;
@@ -55,11 +54,10 @@ system ( "color 0F") ;
                                                                                 string pass ; 
                                                                                 while ( true )
                                                                                 {     
-                                                                                
                                                                                 if (getline(cin, pass) && !pass.empty())  // getline succeded + not empty
                                                                                 return pass;
                                                                                 
-                                                                                //← getline succeded + empty    OR    FAILED (eof, failbit) + empty 
+                                                                                // getline succeded + empty    OR    FAILED (eof, failbit) + empty 
                                                                                 cin.clear();
                                                                                 cout << " input can not be empty !  ,  and EOF is not allowed \n";
                                                                                 }
