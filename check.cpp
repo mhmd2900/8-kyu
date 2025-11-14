@@ -37,7 +37,7 @@ vnum.push_back(z);
 
 
 /////////////////////////////////////  check square root  babylion
-void sqrr(double num)
+void sqrt_bab(double num)
 {
  double g = num/2 ;  // initial guess
  double prev_g ;
@@ -60,7 +60,7 @@ cout << g ;
 
 
 ////////////// check distinct number ( copy repeated number only in 1st appearance )
-bool check ( int number , int arr [] , int index)
+bool check_distinct( int number , int arr [] , int index)
 {
 for ( int i = index -1 ; i >= 0 ; i --)
 if ( number == arr[i])
@@ -72,7 +72,7 @@ return true ;
 
 
 //////////////////// check palindrome
-bool check ( int arr[] , int size)
+bool check_palindrome ( int arr[] , int size)
 {
 for ( int i = 0 ; i < size ; i ++)
 if (arr[i] != arr [size-1-i] )
