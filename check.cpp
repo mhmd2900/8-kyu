@@ -60,7 +60,7 @@ cout << g ;
 
 
 ////////////// check distinct number ( copy repeated number only in 1st appearance )
-bool check_distinct( int number , int arr [] , int index)
+bool check_distinct ( int number , int arr [] , int index)
 {
 for ( int i = index -1 ; i >= 0 ; i --)
 if ( number == arr[i])
