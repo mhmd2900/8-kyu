@@ -7,7 +7,7 @@ using namespace std ;
 
 enum enpassfail { pass , fail , draw };
 enum enquestion { easy = 1 , med = 2 , hard = 3 , mix = 4 };
-enum enoperator { add = 1 , sub = 2 , mult = 3 , divi = 4 , all = 5 };
+enum enoperator { add  = 1 , sub = 2 , mult = 3 , divi = 4 , all = 5 };
 
 string level_to_word (enquestion enenquestion )      // display enum
 {
@@ -154,7 +154,7 @@ break ;
 void correct_wrong  ( st_round& stst_round , st_game& stst_game ) 
 {
 stst_round.is_correct = ( stst_round.user_ans == stst_round.comp_ans ) ;
-if ( stst_round.is_correct == true )
+if ( stst_round.is_correct )
 {
 cout << " \n correct answer \n" ;
 system ( " color 2F");
