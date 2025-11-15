@@ -14,8 +14,8 @@ bool check_prime ( int num )
 
 
 
-//////////////// check prime in range        Sieve of Eratosthenes
-void check_prime_inrange  ( vector<int>&vnum , int min , int max )   
+//////////////// check prime in range        Sieve of Eratosthenes    ,,,   function overloading
+void check_prime  ( vector<int>&vnum , int min , int max )   
 {
 vector<int>vtemp ( max , 0) ;   
 
@@ -37,7 +37,7 @@ vnum.push_back(z);
 
 
 /////////////////////////////////////  check square root  babylion
-void sqrt_bab(double num)
+void check_sqrt(double num)
 {
  double g = num/2 ;  // initial guess
  double prev_g ;
