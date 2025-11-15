@@ -2,6 +2,10 @@
 
 // vector<int> vtemp [max] ;    array of vectors
 
+//////////////////// ternary operator
+a == b ? c = 6 : c= 66 ;
+c = ( a==b ) ? 6 : 66 ;
+
 
 
 ////////////////////    timer
