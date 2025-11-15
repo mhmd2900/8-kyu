@@ -31,6 +31,41 @@ system ( "color 0F") ;
 
 
                                                                               //////////////    input number
+                                                                                int input_number ( string message )
+                                                                                {
+                                                                                cout << message ;
+                                                                                int num ;
+                                                                                while ( true )
+                                                                                {
+                                                                                if ( cin >> num )
+                                                                                return num ;
+                                                                                  
+                                                                                cout << " wrong input , repeat ";
+                                                                                cin.clear();
+                                                                                cin.ignore( numeric_limits<streamsize>::max() , '\n');// // ctrl z + cin.ignore >> write 2 inputs
+                                                                                }
+                                                                                }
+
+
+
+                                                                              //////////////    input number  ,,, function overloading
+                                                                                int input_number ( string message , int from , int to )
+                                                                                {
+                                                                                cout << message ;
+                                                                                int num ;
+                                                                                while ( true )
+                                                                                {
+                                                                                if ( cin >> num && num >= from && num <= to)
+                                                                                return num ;
+                                                                                  
+                                                                                cout << " wrong input , repeat ";
+                                                                                cin.clear();
+                                                                                cin.ignore( numeric_limits<streamsize>::max() , '\n');// // ctrl z + cin.ignore >> write 2 inputs
+                                                                                }
+                                                                                }
+
+
+                                                                              //////////////    input number
                                                                                 int input_number ( string message , int from , int to )
                                                                                 {
                                                                                 cout << message ;
